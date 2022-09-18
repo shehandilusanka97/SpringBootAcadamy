@@ -17,7 +17,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping(path = "/save")
-//    ena Json eka DTO ekk kra ganna  w
+//    ena Json eka DTO ekk kra ganna RequestBody use kranw
     public String saveCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.addCustomer(customerDTO);
         return "saved";
