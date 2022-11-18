@@ -5,6 +5,7 @@ import com.springbootacadamy.springbootAcadamy.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 //to unique the controller
 @RequestMapping("api/v1/customer")
@@ -27,6 +28,11 @@ public class CustomerController {
     public String updateCustomer(@RequestBody CustomerDTO customerDTO){
         String updated = customerService.updateCustomer(customerDTO);
         return updated;
+
+    }
+    @GetMapping(path = "/get-by-id")
+    public CustomerDTO getCustomerById(int customerId){
+
 
     }
 
