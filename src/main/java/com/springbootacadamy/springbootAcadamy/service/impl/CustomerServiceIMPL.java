@@ -51,5 +51,27 @@ public class CustomerServiceIMPL implements CustomerService {
         }
     }
 
+    @Override
+    public CustomerDTO getCustomerById(int customerId) {
+        Customer customer = customerRepo.getById(customerId);
+        if (customer!=null){
+            CustomerDTO customerDTO = new CustomerDTO(
+                    customer.getCustomerId(),
+                    customer.getCustomerName(),
+                    customer.getCustomerAddress(),
+                    customer.getCustomerSalary(),
+                    customer.getContactNumbers(),
+                    customer.getNic(),
+                    customer.isActiveState()
+
+            );
+            return customerDTO;
+        }else{
+            return null;
+        }
+
+
+    }
+
 
 }

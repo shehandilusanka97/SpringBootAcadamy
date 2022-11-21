@@ -30,10 +30,10 @@ public class CustomerController {
         return updated;
 
     }
-    @GetMapping(path = "/get-by-id")
-    public CustomerDTO getCustomerById(int customerId){
-
-
+    @GetMapping(path = "/get-by-id", params = "id")
+    public CustomerDTO getCustomerById(@RequestParam(value = "id") int customerId){
+        CustomerDTO customerDTO = customerService.getCustomerById(customerId);
+        return  customerDTO;
     }
 
 }
