@@ -5,6 +5,7 @@ import com.springbootacadamy.springbootAcadamy.entity.Customer;
 import com.springbootacadamy.springbootAcadamy.repo.CustomerRepo;
 import com.springbootacadamy.springbootAcadamy.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -107,7 +108,26 @@ public class CustomerServiceIMPL implements CustomerService {
     @Override
     public List<CustomerDTO> getAllCustomer() {
         List<Customer> getCustomer = customerRepo.findAll();
+        List<CustomerDTO> customerDTOList= new ArrayList<>();
 
-        return null;
+//        for (Customer customer: getCustomer) {
+//            CustomerDTO customerDTO = new CustomerDTO(
+//                    customer.getCustomerId(),
+//                    customer.getCustomerName(),
+//                    customer.getCustomerAddress(),
+//                    customer.getCustomerSalary(),
+//                    customer.getContactNumbers(),
+//                    customer.getNic(),
+//                    customer.isActiveState()
+//            );
+//            customerDTOList.add(customerDTO);
+//        }
+
+//        Model Mappperrrrr
+        if (customerDTOList!=null){
+            customerDTOList=modelMapper.map(getCustomer, new TypeToken<List<CustomerDTO>>(){
+            }.getType());
+        }
+        return customerDTOList;
     }
 }
