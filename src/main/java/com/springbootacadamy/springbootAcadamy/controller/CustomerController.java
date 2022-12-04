@@ -5,6 +5,8 @@ import com.springbootacadamy.springbootAcadamy.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 //to unique the controller
@@ -34,6 +36,13 @@ public class CustomerController {
     public CustomerDTO getCustomerById(@RequestParam(value = "id") int customerId){
         CustomerDTO customerDTO = customerService.getCustomerById(customerId);
         return  customerDTO;
+    }
+
+    @GetMapping(path ="get=all-customers" )
+    public List<CustomerDTO> getAllCustomers(){
+       List<CustomerDTO> allCustomer = customerService.getAllCustomer();
+       return allCustomer;
+
     }
 
 }
